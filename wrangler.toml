@@ -1,29 +1,29 @@
-name = "brain-tumor-mri-ai"
+name = "braintumorai"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "dist"
 
-# 1. D1 Database: Lưu trữ 9 bảng dữ liệu quan hệ (users, patients, doctors, mri_scans, predictions, doctor_reviews, chat_sessions, chat_messages, faq_documents)
+# 1. D1 Database: Lưu trữ 9 bảng dữ liệu quan hệ
 [[d1_databases]]
 binding = "DB"
 database_name = "brain-tumor-db"
-database_id = "00000000-0000-0000-0000-000000000001"
+database_id = "7a3ca809-d7ce-4d89-b36a-b54bb909fe04"
 
-# 2. R2 Object Storage: Lưu trữ ảnh MRI riêng tư và tệp mô hình ONNX (brain_mri_student.onnx)
+# 2. R2 Object Storage: Lưu trữ ảnh MRI riêng tư và tệp mô hình ONNX
 [[r2_buckets]]
 binding = "MRI_BUCKET"
 bucket_name = "brain-mri-private-bucket"
 
-# 3. Workers KV: Lưu trữ phiên đăng nhập (Session Token có TTL và thu hồi) & bộ nhớ đệm
+# 3. Workers KV: Lưu trữ phiên đăng nhập (Session Token có TTL và thu hồi)
 [[kv_namespaces]]
 binding = "SESSION_KV"
-id = "00000000000000000000000000000001"
+id = "69803e36f42245ca8b59acaabbbc9fe6"
 
-# 4. Vectorize Index: Lưu trữ vector nhúng của bộ dữ liệu hỏi đáp y tế (faq_documents) cho Chatbot RAG
+# 4. Vectorize Index: Lưu trữ vector nhúng của bộ dữ liệu hỏi đáp y tế cho Chatbot RAG
 [[vectorize]]
 binding = "FAQ_VECTORIZE"
 index_name = "brain-tumor-faq-index"
 
-# 5. Workers AI: Sinh vector embedding (@cf/baai/bge-m3) và sinh câu trả lời LLM qua AI Gateway
+# 5. Workers AI: Sinh vector embedding và câu trả lời LLM
 [ai]
 binding = "AI"
 

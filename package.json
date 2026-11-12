@@ -6,12 +6,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node clean-wasm.cjs",
     "preview": "vite preview",
     "pages:dev": "npx wrangler pages dev dist --d1 DB --r2 MRI_BUCKET --kv SESSION_KV --port 8788",
     "db:init:local": "npx wrangler d1 execute brain-tumor-db --local --file=./migrations/0001_schema.sql && npx wrangler d1 execute brain-tumor-db --local --file=./migrations/0002_seed.sql",
     "db:init:remote": "npx wrangler d1 execute brain-tumor-db --remote --file=./migrations/0001_schema.sql && npx wrangler d1 execute brain-tumor-db --remote --file=./migrations/0002_seed.sql",
-    "pages:deploy": "npm run build && npx wrangler pages deploy dist --project-name=brain-tumor-mri-ai"
+    "pages:deploy": "npm run build && npx wrangler pages deploy dist --project-name=braintumorai"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
